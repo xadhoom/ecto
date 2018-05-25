@@ -1,7 +1,7 @@
 defmodule Ecto.Mixfile do
   use Mix.Project
 
-  @version "2.2.9"
+  @version "2.2.10"
   @adapters [:pg, :mysql]
 
   def project do
@@ -63,7 +63,7 @@ defmodule Ecto.Mixfile do
       maintainers: ["Eric Meadows-Jönsson", "José Valim", "James Fish", "Michał Muskała"],
       licenses: ["Apache 2.0"],
       links: %{"GitHub" => "https://github.com/elixir-ecto/ecto"},
-      files: ~w(mix.exs README.md CHANGELOG.md lib) ++
+      files: ~w(.formatter.exs mix.exs README.md CHANGELOG.md lib) ++
              ~w(integration_test/cases integration_test/sql integration_test/support)
     ]
   end
@@ -94,7 +94,8 @@ defmodule Ecto.Mixfile do
       source_url: "https://github.com/elixir-ecto/ecto",
       extras: [
         "guides/Getting Started.md",
-        "guides/Associations.md"
+        "guides/Associations.md",
+        "guides/Testing with Ecto.md",
       ],
       groups_for_modules: [
         # Ecto,
