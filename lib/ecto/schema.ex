@@ -1069,6 +1069,7 @@ defmodule Ecto.Schema do
       end
   """
   defmacro many_to_many(name, queryable, opts \\ []) do
+    queryable = expand_alias(queryable, __CALLER__)
     quote do
       Ecto.Schema.__many_to_many__(__MODULE__, unquote(name), unquote(queryable), unquote(opts))
     end
@@ -1852,7 +1853,7 @@ defmodule Ecto.Schema do
   end
 
   defp check_options!(opts, valid, fun_arity) do
-    case Enum.find(opts, fn {k, _} -> not k in valid end) do
+    case Enum.find(opts, fn {k, _} -> not(k in valid) end) do
       {k, _} ->
         raise ArgumentError, "invalid option #{inspect k} for #{fun_arity}"
       nil ->
